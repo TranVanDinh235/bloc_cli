@@ -6,7 +6,7 @@ import 'package:ansicolor/ansicolor.dart';
 class LogService {
   static final AnsiPen _penError = AnsiPen()..red(bold: true);
   static final AnsiPen _penSuccess = AnsiPen()..green(bold: true);
-  static final AnsiPen _penInfo = AnsiPen()..yellow(bold: true);
+  static final AnsiPen _penInfo = AnsiPen()..blue(bold: true);
 
   static final AnsiPen code = AnsiPen()
     ..black(bold: false, bg: true)

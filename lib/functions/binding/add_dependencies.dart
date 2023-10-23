@@ -45,7 +45,7 @@ import '../create/create_single_file.dart';
 ///}
 ///```
 void addDependencyToBinding(String path, String controllerName, String import) {
-  import = '''import 'package:${PubspecUtils.projectName}/$import';''';
+  import = '''import 'package:${PubspecUtils.moduleName}/$import';''';
   var file = File(path);
   if (file.existsSync()) {
     var lines = file.readAsLinesSync();

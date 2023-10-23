@@ -15,7 +15,7 @@ class HelpCommand extends Command {
   Future<void> execute() async {
     final commandsHelp = _getCommandsHelp(commands, 0);
     LogService.info('''
-List available commands:
+VTM_CLI List available commands:
 $commandsHelp
 ''');
   }

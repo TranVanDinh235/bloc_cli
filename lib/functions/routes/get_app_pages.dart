@@ -100,7 +100,7 @@ ${_getTabs(tabEspaces + 1)}page:()=> const ${namePascalCase}View(),
 ${_getTabs(tabEspaces + 1)}binding: ${namePascalCase}Binding(),
 ${_getTabs(tabEspaces)}),''';
 
-  var import = "import 'package:${PubspecUtils.projectName}/";
+  var import = "import 'package:${PubspecUtils.moduleName}/";
 
   lines.insert(index, line);
 

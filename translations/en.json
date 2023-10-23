@@ -53,7 +53,7 @@
     "install": "Use to install a package in your project (dependencies):",
     "remove": "Use to remove a package in your project (dependencies):",
     "sort": "Sort imports and format dart files",
-    "update": "To update GET_CLI",
+    "update": "To update VTM_CLI",
     "version": "Shows the current CLI version'"
   },
   "info": {

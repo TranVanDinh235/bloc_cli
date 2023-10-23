@@ -29,10 +29,28 @@ class ShellUtils {
         verbose: true);
   }
 
+  static Future<void> flutterGen({String? workingDirectory}) async {
+    LogService.info('Running `flutter pub run build_runner build --delete-conflicting-outputs` …');
+
+    await run('flutter pub run build_runner build --delete-conflicting-outputs', verbose: true, workingDirectory: workingDirectory);
+  }
+
+  static Future<void> flutterCreateModule(String module) async {
+    LogService.info('Running `flutter create $module` …');
+
+    await run('flutter create --template=package $module', verbose: true);
+  }
+
+  static Future<void> flutterCreateMiniApp(String module, {String? workingDirectory}) async {
+    LogService.info('Running `flutter create mini app` …');
+
+    await run('flutter create miniapp', verbose: true, workingDirectory: workingDirectory);
+  }
+
   static Future<void> update(
       [bool isGit = false, bool forceUpdate = false]) async {
-    isGit = GetCli.arguments.contains('--git');
-    forceUpdate = GetCli.arguments.contains('-f');
+    isGit = VTMCli.arguments.contains('--git');
+    forceUpdate = VTMCli.arguments.contains('-f');
     if (!isGit && !forceUpdate) {
       var versionInPubDev =
           await PubDevApi.getLatestVersionFromPackage('get_cli');
@@ -71,5 +89,11 @@ class ShellUtils {
       LogService.info(err.toString());
       return LogService.error(LocaleKeys.error_update_cli.tr);
     }
+  }
+
+  static Future<void> removeFolder(String name) async {
+    LogService.info('remove $name` …');
+
+    await run('rm -r $name', verbose: true);
   }
 }

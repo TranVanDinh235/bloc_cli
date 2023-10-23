@@ -32,8 +32,8 @@ abstract class Command with ArgsMixin {
 
   /// validate command line arguments
   bool validate() {
-    if (GetCli.arguments.contains(commandName) ||
-        GetCli.arguments.contains('$commandName:$name')) {
+    if (VTMCli.arguments.contains(commandName) ||
+        VTMCli.arguments.contains('$commandName:$name')) {
       var flagsNotAceppts = flags;
       flagsNotAceppts.removeWhere((element) => acceptedFlags.contains(element));
       if (flagsNotAceppts.isNotEmpty) {

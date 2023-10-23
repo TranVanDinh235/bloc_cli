@@ -14,7 +14,7 @@ String sortImports(
   String filePath = '',
   bool useRelative = false,
 }) {
-  packageName = packageName ?? PubspecUtils.projectName;
+  packageName = packageName ?? PubspecUtils.moduleName;
   content = formatterDartFile(content);
   var lines = LineSplitter.split(content).toList();
 

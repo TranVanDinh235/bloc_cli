@@ -33,6 +33,8 @@ File writeFile(String path, String content,
     bool useRelativeImport = false}) {
   var newFile = File(Structure.replaceAsExpected(path: path));
 
+  LogService.info('path: ${newFile.path}');
+
   if (!newFile.existsSync() || overwrite) {
     if (!skipFormatter) {
       if (path.endsWith('.dart')) {

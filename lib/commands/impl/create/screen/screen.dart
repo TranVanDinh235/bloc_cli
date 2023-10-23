@@ -23,8 +23,8 @@ class CreateScreenCommand extends Command {
   @override
   Future<void> execute() async {
     var isProject = false;
-    if (GetCli.arguments[0] == 'create') {
-      isProject = GetCli.arguments[1].split(':').first == 'project';
+    if (VTMCli.arguments[0] == 'create') {
+      isProject = VTMCli.arguments[1].split(':').first == 'project';
     }
     var name = this.name;
     if (name.isEmpty || isProject) {
@@ -98,13 +98,13 @@ class CreateScreenCommand extends Command {
         'controllers',
         '.');
 
-    var exportView = 'package:${PubspecUtils.projectName}/'
+    var exportView = 'package:${PubspecUtils.moduleName}/'
         '${Structure.pathToDirImport(view.path)}';
     addExport('lib/presentation/screens.dart', "export '$exportView';");
 
     addExport(
         'lib/infrastructure/navigation/bindings/controllers/controllers_bindings.dart',
-        "export 'package:${PubspecUtils.projectName}/${Structure.pathToDirImport(binding.path)}'; ");
+        "export 'package:${PubspecUtils.moduleName}/${Structure.pathToDirImport(binding.path)}'; ");
     arcAddRoute(name);
   }
 

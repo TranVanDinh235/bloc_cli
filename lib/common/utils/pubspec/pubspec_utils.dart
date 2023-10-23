@@ -36,7 +36,7 @@ class PubspecUtils {
 
   static final _mapName = _PubValue<String>(() => pubSpec.name?.trim() ?? '');
 
-  static String? get projectName => _mapName.value;
+  static String? get moduleName => _mapName.value;
 
   static final _extraFolder = _PubValue<bool?>(
     () {
@@ -57,7 +57,7 @@ class PubspecUtils {
   static bool? get extraFolder => _extraFolder.value;
 
   static Future<bool> addDependencies(String package,
-      {String? version, bool isDev = false, bool runPubGet = true}) async {
+      {String? version, bool isDev = false, bool runPubGet = false}) async {
     var pubSpec = PubSpec.fromYamlString(_pubspecFile.readAsStringSync());
 
     if (containsPackage(package)) {
@@ -85,6 +85,39 @@ class PubspecUtils {
       pubSpec.devDependencies[package] = HostedReference.fromJson(version);
     } else {
       pubSpec.dependencies[package] = HostedReference.fromJson(version);
+    }
+
+    _savePub(pubSpec);
+    if (runPubGet) await ShellUtils.pubGet();
+    LogService.success(LocaleKeys.sucess_package_installed.trArgs([package]));
+    return true;
+  }
+
+  static Future<bool> addPathDependencies(String package,
+      {String? path, bool isDev = false, bool runPubGet = false}) async {
+    var pubSpec = PubSpec.fromYamlString(_pubspecFile.readAsStringSync());
+
+    if (containsPackage(package)) {
+      LogService.info(
+          LocaleKeys.ask_package_already_installed.trArgs([package]),
+          false,
+          false);
+      final menu = Menu(
+        [
+          LocaleKeys.options_yes.tr,
+          LocaleKeys.options_no.tr,
+        ],
+      );
+      final result = menu.choose();
+      if (result.index != 0) {
+        return false;
+      }
+    }
+
+    if (isDev) {
+      pubSpec.devDependencies[package] = PathReference.fromJson({'path': path});
+    } else {
+      pubSpec.dependencies[package] = PathReference.fromJson({'path': path});
     }
 
     _savePub(pubSpec);

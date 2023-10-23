@@ -5,12 +5,15 @@ final List<Command> commands = [
   CommandParent(
     'create',
     [
-      CreateControllerCommand(),
-      CreatePageCommand(),
-      CreateProjectCommand(),
-      CreateProviderCommand(),
-      CreateScreenCommand(),
-      CreateViewCommand()
+      // CreateControllerCommand(),
+      // CreatePageCommand(),
+      // CreateProjectCommand(),
+      // CreateProviderCommand(),
+      // CreateScreenCommand(),
+      // CreateViewCommand()
+      CreateModuleCommand(),
+      CreateMiniAppCommand(),
+      CreateFeatureCommand(),
     ],
     ['-c'],
   ),

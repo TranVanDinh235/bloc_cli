@@ -32,6 +32,7 @@ class Structure {
         path: 'lib/infrastructure/navigation/navigation.dart'),
     //generator files
     'generate_locales': replaceAsExpected(path: 'lib/generated'),
+    'module': replaceAsExpected(path: 'lib/'),
   };
 
   static FileModel model(String? name, String command, bool wrapperFolder,
@@ -48,7 +49,6 @@ class Structure {
         return '${element.path}${p.separator}'.contains('$on${p.separator}');
       }, orElse: () {
         return list.firstWhere((element) {
-          //Fix erro ao encontrar arquivo com nome
           if (element is File) {
             return false;
           }

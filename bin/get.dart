@@ -6,7 +6,7 @@ import 'package:get_cli/get_cli.dart';
 Future<void> main(List<String> arguments) async {
   var time = Stopwatch();
   time.start();
-  final command = GetCli(arguments).findCommand();
+  final command = VTMCli(arguments).findCommand();
 
   if (arguments.contains('--debug')) {
     if (command.validate()) {

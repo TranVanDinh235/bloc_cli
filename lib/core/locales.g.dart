@@ -387,7 +387,7 @@ class Locales {
     'hint_install': 'Use to install a package in your project (dependencies):',
     'hint_remove': 'Use to remove a package in your project (dependencies):',
     'hint_sort': 'Sort imports and format dart files',
-    'hint_update': 'To update GET_CLI',
+    'hint_update': 'To update VTM_CLI',
     'hint_version': 'Shows the current CLI version\'',
     'info_unnecessary_flag': 'The %s is not necessary',
     'info_unnecessary_flag_prural': 'The %s are not necessary',
