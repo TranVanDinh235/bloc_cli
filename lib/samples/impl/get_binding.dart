@@ -21,7 +21,7 @@ class BindingSample extends Sample {
 
   @override
   String get content => '''$_import
-import 'package:${PubspecUtils.moduleName}/$_controllerDir';
+import 'package:${PubspecUtils.appName}/$_controllerDir';
 
 class $_bindingName extends Bindings {
   @override

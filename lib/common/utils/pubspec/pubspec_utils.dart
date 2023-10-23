@@ -36,7 +36,7 @@ class PubspecUtils {
 
   static final _mapName = _PubValue<String>(() => pubSpec.name?.trim() ?? '');
 
-  static String? get moduleName => _mapName.value;
+  static String? get appName => _mapName.value;
 
   static final _extraFolder = _PubValue<bool?>(
     () {

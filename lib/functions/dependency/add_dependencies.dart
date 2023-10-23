@@ -9,7 +9,7 @@ import '../../core/locales.g.dart';
 import '../create/create_single_file.dart';
 
 void addDependency(String path, String controllerName, String import) {
-  import = '''import 'package:${PubspecUtils.moduleName}/$import';''';
+  import = '''import 'package:${PubspecUtils.appName}/$import';''';
   var file = File(path);
   if (file.existsSync()) {
     var lines = file.readAsLinesSync();

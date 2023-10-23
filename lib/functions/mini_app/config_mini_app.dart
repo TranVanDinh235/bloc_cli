@@ -1,52 +1,44 @@
 import 'dart:io';
 import '../../common/utils/logger/log_utils.dart';
-import '../create/create_single_file.dart';
+import '../../common/utils/pubspec/pubspec_utils.dart';
+import '../../common/utils/shell/shel.utils.dart';
+import '../../core/structure.dart';
+import 'package:path/path.dart' as p;
 
-void configMiniApp(String path, {String? module}) {
-  var file = File(path);
-  if (!file.existsSync()) {
-    file.createSync(recursive: true);
-  }
-  if (file.existsSync()) {
-    var lines = file.readAsLinesSync();
+import 'config_main_file.dart';
+import 'config_mini_app_router.dart';
 
-    // add router
-    lines.add('''class RouteConstant {
-      static const String template = '/template';
-    }
-    ''');
+void configMiniApp(String module, String path) async {
+  Directory.current = path;
 
-    writeFile(file.path, lines.join('\n'), overwrite: true, logger: false);
-    LogService.success('Router constant created successfully');
-  }
-}
+  // remove inessential folders
+  await ShellUtils.removeFolder('android');
+  await ShellUtils.removeFolder('ios');
+  await ShellUtils.removeFolder('linux');
+  await ShellUtils.removeFolder('macos');
+  await ShellUtils.removeFolder('windows');
+  await ShellUtils.removeFolder('test');
 
-void configMiniAppRouterFile(String path) {
-  final import = '''import 'package:core_ui/core_ui.dart';
-  import 'package:flutter/material.dart';
-  import 'route_constants.dart';
+  // add dependencies
+  await PubspecUtils.addPathDependencies(module, path: '../');
 
-  part 'module_router.gm.dart';''';
+  await PubspecUtils.addDependencies('build_runner', isDev: true);
+  await PubspecUtils.addDependencies(
+    'auto_route_generator',
+    version: '7.1.1',
+    isDev: true,
+    runPubGet: true,
+  );
 
-  var file = File(path);
-  if (!file.existsSync()) {
-    file.createSync(recursive: true);
-  }
-  if (file.existsSync()) {
-    var lines = file.readAsLinesSync();
+  // config main file
+  final pathFileMain = Structure.replaceAsExpected(
+      path: '$path${p.separator}lib${p.separator}main.dart');
+  await configMainFile(pathFileMain, module);
 
-    // add import
-    lines.add(import);
+  final pathFileRouter = Structure.replaceAsExpected(
+      path: '$path${p.separator}lib${p.separator}app_router.dart');
+  configMiniAppRouterFile(pathFileRouter, module);
 
-    // add module
-    lines.add('''@AutoRouterConfig.module()
-      class ModuleRouter extends _\$ModuleRouter {
-        List<AutoRoute> get routes => [
-              /// add route here
-            ];
-      }''');
-
-    writeFile(file.path, lines.join('\n'), overwrite: true, logger: false);
-    LogService.success('Router file created successfully');
-  }
+  LogService.success('gen code');
+  await ShellUtils.flutterGen();
 }

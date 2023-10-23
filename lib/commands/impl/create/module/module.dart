@@ -83,7 +83,7 @@ class CreateModuleCommand extends Command {
     await PubspecUtils.addPathDependencies('core_ui', path: '../core_ui');
     await PubspecUtils.addPathDependencies('core_network',
         path: '../core_network');
-    await PubspecUtils.addDependencies('auto_route_generator', isDev: true);
+    await PubspecUtils.addDependencies('auto_route_generator', version: '7.1.1', isDev: true);
     await PubspecUtils.addDependencies('build_runner', isDev: true);
     await PubspecUtils.addDependencies('json_serializable',
         isDev: true, runPubGet: true);
@@ -118,37 +118,12 @@ class CreateModuleCommand extends Command {
     await ShellUtils.flutterGen();
 
     // create mini app
-    await ShellUtils.flutterCreateMiniApp(nameModule, workingDirectory: Directory.current.path);
+    await ShellUtils.flutterCreateMiniApp('mini_app', workingDirectory: Directory.current.path);
 
-    final pathMiniApp = Structure.replaceAsExpected(
-        path:
-            '${Directory.current.path}${p.separator}lib${p.separator}feature${p.separator}mini_app${p.separator}mini_app.dart');
-    configMiniApp(pathMiniApp, module: nameModule);
+    var pathMiniApp = Structure.replaceAsExpected(
+        path: '${Directory.current.path}${p.separator}mini_app');
 
-    // switch (linterResult.index) {
-    //   case 0:
-    //     if (PubspecUtils.isServerProject) {
-    //       await PubspecUtils.addDependencies('lints',
-    //           isDev: true, runPubGet: true);
-    //       AnalysisOptionsSample(
-    //           include: 'include: package:lints/recommended.yaml')
-    //           .create();
-    //     } else {
-    //       await PubspecUtils.addDependencies('flutter_lints',
-    //           isDev: true, runPubGet: true);
-    //       AnalysisOptionsSample(
-    //           include: 'include: package:flutter_lints/flutter.yaml')
-    //           .create();
-    //     }
-    //     break;
-    //
-    //   default:
-    //     AnalysisOptionsSample().create();
-    // }
-    // await InitCommand().execute();
-    // } else {
-    //   await InitGetServer().execute();
-    // }
+    configMiniApp(nameModule.snakeCase, pathMiniApp);
   }
 
   @override

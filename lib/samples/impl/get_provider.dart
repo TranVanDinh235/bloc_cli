@@ -26,7 +26,7 @@ class ProviderSample extends Sample {
       ? "import 'package:get_server/get_server.dart';"
       : "import 'package:get/get.dart';";
   String get _importModelPath => createEndpoints
-      ? "import 'package:${PubspecUtils.moduleName}/$modelPath';\n"
+      ? "import 'package:${PubspecUtils.appName}/$modelPath';\n"
       : '\n';
 
   @override

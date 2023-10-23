@@ -41,10 +41,10 @@ class ShellUtils {
     await run('flutter create --template=package $module', verbose: true);
   }
 
-  static Future<void> flutterCreateMiniApp(String module, {String? workingDirectory}) async {
+  static Future<void> flutterCreateMiniApp(String nameApp, {String? workingDirectory}) async {
     LogService.info('Running `flutter create mini app` …');
 
-    await run('flutter create miniapp', verbose: true, workingDirectory: workingDirectory);
+    await run('flutter create $nameApp', verbose: true, workingDirectory: workingDirectory);
   }
 
   static Future<void> update(

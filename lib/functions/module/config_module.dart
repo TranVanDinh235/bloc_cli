@@ -7,7 +7,7 @@ import '../../common/utils/pubspec/pubspec_utils.dart';
 import '../create/create_single_file.dart';
 
 void configModuleFile(String path) {
-  final moduleName = PubspecUtils.moduleName ?? '';
+  final moduleName = PubspecUtils.appName ?? '';
   final import =
       '''import 'package:auto_route/src/route/auto_route_config.dart';
   import 'package:core_ui/base/base_module.dart';
