@@ -46,12 +46,12 @@ class ${_fileName.pascalCase}BodyState extends State<${_fileName.pascalCase}Body
       body: BlocConsumer<${_fileName.pascalCase}Cubit, ${_fileName.pascalCase}State>(
         listener: (_, state) {},
         builder: (_, state) {
-          return const Center(
+          return Center(
             child: Text('${_fileName.pascalCase} Page'),
           );
         },
       ),
-    )
+    );
   }
 }
 ''';
