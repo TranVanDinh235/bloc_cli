@@ -184,7 +184,7 @@ class @controller extends GetxController {
 output
 
 ```dart
-import 'package:get/get.dart';
+import 'package:get/vtm.dart';
 
 class AuthController extends GetxController {
   final email = ''.obs;

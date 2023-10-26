@@ -13,7 +13,7 @@ class ArcScreenSample extends Sample {
   @override
   String get content => !isExample
       ? '''import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/vtm.dart';
 
 import 'controllers/${fileName.snakeCase}.controller.dart';
 
@@ -36,7 +36,7 @@ class ${fileName.pascalCase}Screen extends GetView<${fileName.pascalCase}Control
   }
 }
 '''
-      : '''import 'package:get/get.dart';
+      : '''import 'package:get/vtm.dart';
 import 'package:flutter/material.dart';
 
 import 'controllers/counter.controller.dart';

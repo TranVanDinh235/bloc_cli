@@ -5,7 +5,7 @@ class GetXMainSample extends Sample {
   GetXMainSample({this.isServer}) : super('lib/main.dart', overwrite: true);
 
   String get _flutterMain => '''import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/vtm.dart';
 
 import 'app/routes/app_pages.dart';
 

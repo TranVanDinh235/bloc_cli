@@ -17,7 +17,7 @@ class BindingSample extends Sample {
 
   String get _import => _isServer
       ? "import 'package:get_server/get_server.dart';"
-      : "import 'package:get/get.dart';";
+      : "import 'package:get/vtm.dart';";
 
   @override
   String get content => '''$_import

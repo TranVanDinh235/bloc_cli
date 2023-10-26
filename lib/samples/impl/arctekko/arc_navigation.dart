@@ -7,7 +7,7 @@ class ArcNavigationSample extends Sample {
 
   @override
   String get content => '''import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/vtm.dart';
 
 import '../../config.dart';
 import '../../presentation/screens.dart';
