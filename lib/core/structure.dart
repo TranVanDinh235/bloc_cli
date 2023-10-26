@@ -33,6 +33,7 @@ class Structure {
     //generator files
     'generate_locales': replaceAsExpected(path: 'lib/generated'),
     'module': replaceAsExpected(path: 'lib/'),
+    'feature': replaceAsExpected(path: 'lib/feature/'),
   };
 
   static FileModel model(String? name, String command, bool wrapperFolder,

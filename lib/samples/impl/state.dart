@@ -13,7 +13,7 @@ class StateSample extends Sample {
   @override
   String get content => state;
 
-  String get state => '''part of '${_fileName}_cubit.dart';
+  String get state => '''part of '${_fileName.snakeCase}_cubit.dart';
   
 class ${_fileName.pascalCase}State extends Equatable {
   const ${_fileName.pascalCase}State({

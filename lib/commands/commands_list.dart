@@ -6,7 +6,7 @@ final List<Command> commands = [
     'create',
     [
       // CreateControllerCommand(),
-      // CreatePageCommand(),
+      CreatePageCommand(),
       // CreateProjectCommand(),
       // CreateProviderCommand(),
       // CreateScreenCommand(),

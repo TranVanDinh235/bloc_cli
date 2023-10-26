@@ -14,7 +14,7 @@ class RepositorySample extends Sample {
   String get content => state;
 
   String get state => '''class ${_fileName.pascalCase}Repository {
-  const ${_fileName.pascalCase}Repository({});
+  const ${_fileName.pascalCase}Repository();
 }
 ''';
 }

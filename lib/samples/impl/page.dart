@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/di/injection.dart';
-import '../cubits/${_fileName}_cubit.dart';
+import '../cubit/${_fileName.snakeCase}_cubit.dart';
 
 @RoutePage()
 class ${_fileName.pascalCase}Page extends StatelessWidget {
@@ -42,12 +42,16 @@ class ${_fileName.pascalCase}Body extends StatefulWidget {
 class ${_fileName.pascalCase}BodyState extends State<${_fileName.pascalCase}Body> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<${_fileName.pascalCase}Cubit, ${_fileName.pascalCase}State>(
-      listener: (_, state) {},
-      builder: (_, state) {
-        return Container();
-      },
-    );
+    return Scaffold(
+      body: BlocConsumer<${_fileName.pascalCase}Cubit, ${_fileName.pascalCase}State>(
+        listener: (_, state) {},
+        builder: (_, state) {
+          return const Center(
+            child: Text('${_fileName.pascalCase} Page'),
+          );
+        },
+      ),
+    )
   }
 }
 ''';

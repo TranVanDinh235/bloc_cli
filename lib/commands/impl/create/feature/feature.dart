@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:dcli/dcli.dart';
+import 'package:get_cli/functions/dependency/add_dependencies.dart';
+import 'package:get_cli/functions/routes/add_auto_route.dart';
 import 'package:get_cli/samples/impl/cubit.dart';
 import 'package:get_cli/samples/impl/page.dart';
 import 'package:recase/recase.dart';
@@ -42,7 +44,7 @@ class CreateFeatureCommand extends Command {
 
   void checkForAlreadyExists(String? name) {
     var newFileModel =
-        Structure.model(name, 'page', true, on: onCommand, folderName: name);
+        Structure.model(name, 'feature', true, on: onCommand, folderName: name);
     var pathSplit = Structure.safeSplitPath(newFileModel.path!);
 
     pathSplit.removeLast();
@@ -76,6 +78,18 @@ class CreateFeatureCommand extends Command {
 
   void _writeFiles(String path, String name, {bool overwrite = false}) {
     var extraFolder = PubspecUtils.extraFolder ?? true;
+    var repositoryFile = handleFileCreate(
+      name,
+      'repository',
+      path,
+      extraFolder,
+      RepositorySample(
+        '',
+        name,
+        overwrite: overwrite,
+      ),
+      'repository',
+    );
     var stateFile = handleFileCreate(
       name,
       'state',
@@ -86,7 +100,7 @@ class CreateFeatureCommand extends Command {
         name,
         overwrite: overwrite,
       ),
-      'state',
+      'cubit',
     );
     var cubitFile = handleFileCreate(
       name,
@@ -100,7 +114,6 @@ class CreateFeatureCommand extends Command {
       ),
       'cubit',
     );
-    // var controllerDir = Structure.pathToDirImport(cubitFile.path);
     var pageFile = handleFileCreate(
       name,
       'page',
@@ -108,29 +121,21 @@ class CreateFeatureCommand extends Command {
       extraFolder,
       PageSample(
         '',
-        '${name.pascalCase}Page',
+        name,
         overwrite: overwrite,
       ),
       'page',
     );
-    var repository = handleFileCreate(
-      name,
-      'repository',
-      path,
-      extraFolder,
-      RepositorySample(
-        '',
-        '${name.pascalCase}Repository',
-        overwrite: overwrite,
-      ),
-      'repository',
-    );
 
-    // addRoute(
-    //   name,
-    //   Structure.pathToDirImport(bindingFile.path),
-    //   Structure.pathToDirImport(viewFile.path),
-    // );
+    addDependency(
+      name,
+      Structure.pathToDirImport(repositoryFile.path),
+      Structure.pathToDirImport(cubitFile.path),
+    );
+    addAutoRoute(
+      name,
+      Structure.pathToDirImport(pageFile.path),
+    );
     LogService.success(LocaleKeys.sucess_page_create.trArgs([name.pascalCase]));
   }
 

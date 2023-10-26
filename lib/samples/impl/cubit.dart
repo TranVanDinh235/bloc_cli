@@ -15,9 +15,9 @@ class CubitSample extends Sample {
   String get cubit => '''import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../repositories/${_fileName}_repository.dart';
+import '../repository/${_fileName.snakeCase}_repository.dart';
 
-part '${_fileName}_state.dart';
+part '${_fileName.snakeCase}_state.dart';
 
 class ${_fileName.pascalCase}Cubit extends Cubit<${_fileName.pascalCase}State> {
   ${_fileName.pascalCase}Cubit({required this.repository}) : super(const ${_fileName.pascalCase}State());

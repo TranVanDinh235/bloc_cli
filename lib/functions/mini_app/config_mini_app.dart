@@ -12,8 +12,6 @@ void configMiniApp(String module, String path) async {
   Directory.current = path;
 
   // remove inessential folders
-  await ShellUtils.removeFolder('android');
-  await ShellUtils.removeFolder('ios');
   await ShellUtils.removeFolder('linux');
   await ShellUtils.removeFolder('macos');
   await ShellUtils.removeFolder('windows');

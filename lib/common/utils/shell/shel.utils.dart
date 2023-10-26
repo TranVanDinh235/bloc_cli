@@ -92,8 +92,6 @@ class ShellUtils {
   }
 
   static Future<void> removeFolder(String name) async {
-    LogService.info('remove $name` …');
-
     await run('rm -r $name', verbose: true);
   }
 }

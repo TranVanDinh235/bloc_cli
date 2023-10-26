@@ -3,8 +3,6 @@ import 'dart:io';
 
 import 'package:dcli/dcli.dart';
 import 'package:recase/recase.dart';
-import 'package:path/path.dart' as p;
-
 
 import '../../../../common/menu/menu.dart';
 import '../../../../common/utils/logger/log_utils.dart';
@@ -44,56 +42,37 @@ class CreatePageCommand extends Command {
   String? get hint => LocaleKeys.hint_create_page.tr;
 
   void checkForAlreadyExists(String? name) {
-    var pathSubModule = Structure.replaceAsExpected(
-        path: '${Directory.current.path}${p.separator}mymodule');
-    Directory.current = pathSubModule;
-    LogService.info('module path: $pathSubModule');
-    final pt = Structure.replaceAsExpected(
-        path: '${Directory.current.path}${p.separator}lib/mymodule.dart');
-    var file = File(pt);
-    if (file.existsSync()) {
-      LogService.info('module exists');
-    } else {
-      LogService.info('module not exists');
-    }
-
-    final fileModel = Structure.model(name, commandName, false);
-    LogService.info('module path: ${fileModel.path}');
-
     var newFileModel =
-        Structure.model(name, 'page', true, on: onCommand, folderName: name);
-    LogService.info('path: ${newFileModel.path}');
+    Structure.model(name, 'page', true, on: onCommand, folderName: name);
     var pathSplit = Structure.safeSplitPath(newFileModel.path!);
-    LogService.info('path: $pathSplit');
+
     pathSplit.removeLast();
     var path = pathSplit.join('/');
     path = Structure.replaceAsExpected(path: path);
-    LogService.info('path: $path');
-    Directory(path).createSync(recursive: true);
-    // if (Directory(path).existsSync()) {
-    //   final menu = Menu(
-    //     [
-    //       LocaleKeys.options_yes.tr,
-    //       LocaleKeys.options_no.tr,
-    //       LocaleKeys.options_rename.tr,
-    //     ],
-    //     title:
-    //         Translation(LocaleKeys.ask_existing_page.trArgs([name])).toString(),
-    //   );
-    //   final result = menu.choose();
-    //   if (result.index == 0) {
-    //     _writeFiles(path, name!, overwrite: true);
-    //   } else if (result.index == 2) {
-    //     // final dialog = CLI_Dialog();
-    //     // dialog.addQuestion(LocaleKeys.ask_new_page_name.tr, 'name');
-    //     // name = dialog.ask()['name'] as String?;
-    //     var name = ask(LocaleKeys.ask_new_page_name.tr);
-    //     checkForAlreadyExists(name.trim().snakeCase);
-    //   }
-    // } else {
-    //   Directory(path).createSync(recursive: true);
-    //   _writeFiles(path, name!, overwrite: false);
-    // }
+    if (Directory(path).existsSync()) {
+      final menu = Menu(
+        [
+          LocaleKeys.options_yes.tr,
+          LocaleKeys.options_no.tr,
+          LocaleKeys.options_rename.tr,
+        ],
+        title:
+        Translation(LocaleKeys.ask_existing_page.trArgs([name])).toString(),
+      );
+      final result = menu.choose();
+      if (result.index == 0) {
+        _writeFiles(path, name!, overwrite: true);
+      } else if (result.index == 2) {
+        // final dialog = CLI_Dialog();
+        // dialog.addQuestion(LocaleKeys.ask_new_page_name.tr, 'name');
+        // name = dialog.ask()['name'] as String?;
+        var name = ask(LocaleKeys.ask_new_page_name.tr);
+        checkForAlreadyExists(name.trim().snakeCase);
+      }
+    } else {
+      Directory(path).createSync(recursive: true);
+      _writeFiles(path, name!, overwrite: false);
+    }
   }
 
   void _writeFiles(String path, String name, {bool overwrite = false}) {
