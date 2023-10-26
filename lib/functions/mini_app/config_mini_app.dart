@@ -8,7 +8,7 @@ import 'package:path/path.dart' as p;
 import 'config_main_file.dart';
 import 'config_mini_app_router.dart';
 
-void configMiniApp(String module, String path) async {
+Future configMiniApp(String module, String path) async {
   Directory.current = path;
 
   // remove inessential folders
@@ -35,7 +35,7 @@ void configMiniApp(String module, String path) async {
 
   final pathFileRouter = Structure.replaceAsExpected(
       path: '$path${p.separator}lib${p.separator}app_router.dart');
-  configMiniAppRouterFile(pathFileRouter, module);
+  await configMiniAppRouterFile(pathFileRouter, module);
 
   LogService.success('gen code');
   await ShellUtils.flutterGen();

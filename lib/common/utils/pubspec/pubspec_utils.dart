@@ -58,38 +58,42 @@ class PubspecUtils {
 
   static Future<bool> addDependencies(String package,
       {String? version, bool isDev = false, bool runPubGet = false}) async {
-    var pubSpec = PubSpec.fromYamlString(_pubspecFile.readAsStringSync());
+    try {
+      var pubSpec = PubSpec.fromYamlString(_pubspecFile.readAsStringSync());
 
-    if (containsPackage(package)) {
-      LogService.info(
-          LocaleKeys.ask_package_already_installed.trArgs([package]),
-          false,
-          false);
-      final menu = Menu(
-        [
-          LocaleKeys.options_yes.tr,
-          LocaleKeys.options_no.tr,
-        ],
-      );
-      final result = menu.choose();
-      if (result.index != 0) {
-        return false;
+      if (containsPackage(package)) {
+        LogService.info(
+            LocaleKeys.ask_package_already_installed.trArgs([package]),
+            false,
+            false);
+        final menu = Menu(
+          [
+            LocaleKeys.options_yes.tr,
+            LocaleKeys.options_no.tr,
+          ],
+        );
+        final result = menu.choose();
+        if (result.index != 0) {
+          return false;
+        }
       }
-    }
 
-    version = version == null || version.isEmpty
-        ? await PubDevApi.getLatestVersionFromPackage(package)
-        : '^$version';
-    if (version == null) return false;
-    if (isDev) {
-      pubSpec.devDependencies[package] = HostedReference.fromJson(version);
-    } else {
-      pubSpec.dependencies[package] = HostedReference.fromJson(version);
-    }
+      version = version == null || version.isEmpty
+          ? await PubDevApi.getLatestVersionFromPackage(package)
+          : '^$version';
+      if (version == null) return false;
+      if (isDev) {
+        pubSpec.devDependencies[package] = HostedReference.fromJson(version);
+      } else {
+        pubSpec.dependencies[package] = HostedReference.fromJson(version);
+      }
 
-    _savePub(pubSpec);
-    if (runPubGet) await ShellUtils.pubGet();
-    LogService.success(LocaleKeys.sucess_package_installed.trArgs([package]));
+      _savePub(pubSpec);
+      if (runPubGet) await ShellUtils.pubGet();
+      LogService.success(LocaleKeys.sucess_package_installed.trArgs([package]));
+    } catch (e) {
+      throw CliException(e.toString());
+    }
     return true;
   }
 
