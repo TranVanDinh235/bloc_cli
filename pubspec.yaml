@@ -28,4 +28,3 @@ dev_dependencies:
 
 executables:
   vtm: vtm
-  getx: get
