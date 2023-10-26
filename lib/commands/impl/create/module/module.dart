@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:get_cli/functions/module/config_router.dart';
 import 'package:path/path.dart' as p;
 import 'package:recase/recase.dart';
 
@@ -13,6 +12,7 @@ import '../../../../core/structure.dart';
 import '../../../../functions/mini_app/config_mini_app.dart';
 import '../../../../functions/module/config_injection.dart';
 import '../../../../functions/module/config_module.dart';
+import '../../../../functions/module/config_router.dart';
 import '../../../interface/command.dart';
 
 class CreateModuleCommand extends Command {

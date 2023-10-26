@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:get_cli/functions/mini_app/config_mini_app.dart';
 import 'package:path/path.dart' as p;
 import 'package:recase/recase.dart';
 
@@ -9,6 +8,7 @@ import '../../../../common/utils/shell/shel.utils.dart';
 import '../../../../core/internationalization.dart';
 import '../../../../core/locales.g.dart';
 import '../../../../core/structure.dart';
+import '../../../../functions/mini_app/config_mini_app.dart';
 import '../../../interface/command.dart';
 
 class CreateMiniAppCommand extends Command {

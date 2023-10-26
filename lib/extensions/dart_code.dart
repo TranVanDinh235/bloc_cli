@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:get_cli/functions/create/create_single_file.dart';
-import 'package:get_cli/functions/formatter_dart_file/frommatter_dart_file.dart';
 
 import '../exception_handler/exceptions/cli_exception.dart';
+import '../functions/create/create_single_file.dart';
+import '../functions/formatter_dart_file/frommatter_dart_file.dart';
 import 'string.dart';
 
 extension DartCodeExt on File {

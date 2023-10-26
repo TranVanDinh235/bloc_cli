@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:get_cli/core/internationalization.dart';
 import 'package:recase/recase.dart';
 
 import '../../common/utils/logger/log_utils.dart';

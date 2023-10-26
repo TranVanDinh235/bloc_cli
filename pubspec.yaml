@@ -1,4 +1,4 @@
-name: get_cli
+name: vtm_cli
 version: 1.8.2
 homepage: https://github.com/jonataslaw/get_cli
 description: Official CLI for GetX™ framework to build Flutter and Server
@@ -27,5 +27,5 @@ dev_dependencies:
   test: ^1.5.0
 
 executables:
-  get: get
+  vtm: vtm
   getx: get

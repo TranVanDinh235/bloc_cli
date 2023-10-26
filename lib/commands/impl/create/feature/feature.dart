@@ -1,9 +1,5 @@
 import 'dart:io';
 import 'package:dcli/dcli.dart';
-import 'package:get_cli/functions/dependency/add_dependencies.dart';
-import 'package:get_cli/functions/routes/add_auto_route.dart';
-import 'package:get_cli/samples/impl/cubit.dart';
-import 'package:get_cli/samples/impl/page.dart';
 import 'package:recase/recase.dart';
 
 import '../../../../common/menu/menu.dart';
@@ -14,6 +10,10 @@ import '../../../../core/internationalization.dart';
 import '../../../../core/locales.g.dart';
 import '../../../../core/structure.dart';
 import '../../../../functions/create/create_single_file.dart';
+import '../../../../functions/dependency/add_dependencies.dart';
+import '../../../../functions/routes/add_auto_route.dart';
+import '../../../../samples/impl/cubit.dart';
+import '../../../../samples/impl/page.dart';
 import '../../../../samples/impl/repository.dart';
 import '../../../../samples/impl/state.dart';
 import '../../../interface/command.dart';

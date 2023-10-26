@@ -1,4 +1,4 @@
-// DO NOT EDIT. This is code generated via package:get_cli/get_cli.dart
+// DO NOT EDIT. This is code generated via package:get_cli/vtm_cli.dart
 
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: constant_identifier_names

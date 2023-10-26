@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:get_cli/core/structure.dart';
 import 'package:recase/recase.dart';
 
 import '../../common/utils/pubspec/pubspec_utils.dart';

@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:get_cli/common/utils/shell/shel.utils.dart';
 import 'package:recase/recase.dart';
 
 import '../../common/utils/logger/log_utils.dart';

@@ -1,7 +1,7 @@
-import 'package:get_cli/common/utils/logger/log_utils.dart';
-import 'package:get_cli/exception_handler/exception_handler.dart';
-import 'package:get_cli/functions/version/version_update.dart';
-import 'package:get_cli/get_cli.dart';
+import 'package:vtm_cli/common/utils/logger/log_utils.dart';
+import 'package:vtm_cli/exception_handler/exception_handler.dart';
+import 'package:vtm_cli/functions/version/version_update.dart';
+import 'package:vtm_cli/vtm_cli.dart';
 
 Future<void> main(List<String> arguments) async {
   var time = Stopwatch();

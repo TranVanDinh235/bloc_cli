@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:get_cli/common/utils/logger/log_utils.dart';
 
+import '../../common/utils/logger/log_utils.dart';
 import '../create/create_single_file.dart';
 
 void configInjectionFile(String path) {
