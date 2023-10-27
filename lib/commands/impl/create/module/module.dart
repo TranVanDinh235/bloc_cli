@@ -69,8 +69,8 @@ class CreateModuleCommand extends Command {
     configRouterConstant(pathFileRouterConstant);
     final pathFileRouter = Structure.replaceAsExpected(
         path:
-            '${Directory.current.path}${p.separator}lib${p.separator}core${p.separator}router${p.separator}module_router.dart');
-    configRouterFile(pathFileRouter);
+            '${Directory.current.path}${p.separator}lib${p.separator}core${p.separator}router${p.separator}${nameModule.snakeCase}_router.dart');
+    configRouterFile(nameModule, pathFileRouter);
     await ShellUtils.flutterGen();
 
     // create mini app

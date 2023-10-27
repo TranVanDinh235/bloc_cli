@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:recase/recase.dart';
+
 import '../../common/utils/logger/log_utils.dart';
 import '../create/create_single_file.dart';
 
@@ -21,12 +23,12 @@ void configRouterConstant(String path) {
   }
 }
 
-void configRouterFile(String path) {
+void configRouterFile(String nameModule, String path) {
   final import = '''import 'package:core_ui/core_ui.dart';
   import 'package:flutter/material.dart';
   import 'route_constants.dart';
 
-  part 'module_router.gm.dart';''';
+  part '${nameModule.snakeCase}_router.gm.dart';''';
 
   var file = File(path);
   if (!file.existsSync()) {
@@ -40,7 +42,7 @@ void configRouterFile(String path) {
 
     // add module
     lines.add('''@AutoRouterConfig.module()
-      class ModuleRouter extends _\$ModuleRouter {
+      class ${nameModule.pascalCase}Router extends _\$${nameModule.pascalCase}Router {
         List<AutoRoute> get routes => [
               /// add route here
             ];
