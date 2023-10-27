@@ -7,7 +7,7 @@ import '../create/create_single_file.dart';
 
 Future configMiniAppRouterFile(String path, String module) async {
   final import = '''import 'package:core_ui/core_ui.dart';
-  import 'package:${module.snakeCase}/core/router/module_router.dart';
+  import 'package:${module.snakeCase}/core/router/${module.snakeCase}_router.dart';
   
   part 'app_router.gr.dart';
   ''';
@@ -24,11 +24,11 @@ Future configMiniAppRouterFile(String path, String module) async {
 
     // add module
     lines.add('''
-    @AutoRouterConfig(modules: [ModuleRouter])
+    @AutoRouterConfig(modules: [${module.pascalCase}Router])
       class AppRouter extends _\$AppRouter {
         @override
         List<AutoRoute> get routes => [
-              ...ModuleRouter().routes,
+              ...${module.pascalCase}Router().routes,
             ];
       }
     ''');
