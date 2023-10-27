@@ -11,9 +11,9 @@ flutter pub global activate --source git https://github.com/TranVanDinh235/my_cl
 
 
 // To create a module in the current directory:
-get create module:my_module
+vtm create module:my_module
 
 
 // To create a feature in the current directory:
-get create feature:home
+vtm create feature:home
 ```

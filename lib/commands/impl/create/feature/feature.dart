@@ -5,6 +5,7 @@ import 'package:recase/recase.dart';
 import '../../../../common/menu/menu.dart';
 import '../../../../common/utils/logger/log_utils.dart';
 import '../../../../common/utils/pubspec/pubspec_utils.dart';
+import '../../../../common/utils/shell/shel.utils.dart';
 import '../../../../core/generator.dart';
 import '../../../../core/internationalization.dart';
 import '../../../../core/locales.g.dart';
@@ -36,13 +37,13 @@ class CreateFeatureCommand extends Command {
     if (name.isEmpty || isProject) {
       name = 'home';
     }
-    checkForAlreadyExists(name);
+    await checkForAlreadyExists(name);
   }
 
   @override
   String? get hint => LocaleKeys.hint_create_page.tr;
 
-  void checkForAlreadyExists(String? name) {
+  Future checkForAlreadyExists(String? name) async {
     var newFileModel =
         Structure.model(name, 'feature', true, on: onCommand, folderName: name);
     var pathSplit = Structure.safeSplitPath(newFileModel.path!);
@@ -74,6 +75,7 @@ class CreateFeatureCommand extends Command {
       Directory(path).createSync(recursive: true);
       _writeFiles(path, name!, overwrite: false);
     }
+    await ShellUtils.flutterGen();
   }
 
   void _writeFiles(String path, String name, {bool overwrite = false}) {
@@ -136,6 +138,7 @@ class CreateFeatureCommand extends Command {
       name,
       Structure.pathToDirImport(pageFile.path),
     );
+
     LogService.success(LocaleKeys.sucess_page_create.trArgs([name.pascalCase]));
   }
 

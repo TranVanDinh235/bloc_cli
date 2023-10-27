@@ -24,8 +24,6 @@ void addAutoRoute(String nameRoute, String viewDir) {
 
   addAutoRoutePage(nameRoute, viewDir);
 
-  ShellUtils.flutterGen();
-
   LogService.success(
       Translation(LocaleKeys.sucess_route_created).trArgs([nameRoute]));
 }
