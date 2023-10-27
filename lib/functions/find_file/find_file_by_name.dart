@@ -8,7 +8,7 @@ File findFileByName(String name) {
   final list = current.listSync(recursive: true, followLinks: false);
   var contains = list.firstWhere((element) {
     if (element is File) {
-      return basename(element.path) == name;
+      return basename(element.path).contains(name);
     }
     return false;
   }, orElse: () {

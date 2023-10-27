@@ -5,12 +5,12 @@ import 'package:recase/recase.dart';
 import '../../common/utils/pubspec/pubspec_utils.dart';
 import '../create/create_single_file.dart';
 
-void configModuleFile(String path) {
+void configModuleFile(String nameModule, String path) {
   final moduleName = PubspecUtils.appName ?? '';
   final import =
       '''import 'package:auto_route/src/route/auto_route_config.dart';
   import 'package:core_ui/base/base_module.dart';
-  import 'package:$moduleName/core/router/module_router.dart';
+  import 'package:$moduleName/core/router/${nameModule.snakeCase}_router.dart';
   import 'core/di/injection.dart';
   ''';
   var file = File(path);
@@ -31,7 +31,7 @@ void configModuleFile(String path) {
     // add module
     lines.add('''late Function(String) setInitRoute;
     class ${moduleName.pascalCase} extends BaseModule {
-      ModuleRouter moduleRouter = ModuleRouter();
+      final moduleRouter = ${nameModule.pascalCase}Router();
     
       @override
       void injectDependency() => configureDependencies();

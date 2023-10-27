@@ -47,7 +47,7 @@ class CreateModuleCommand extends Command {
     final pathFileModule = Structure.replaceAsExpected(
         path:
             '${Directory.current.path}${p.separator}lib${p.separator}${nameModule.snakeCase}.dart');
-    configModuleFile(pathFileModule);
+    configModuleFile(nameModule, pathFileModule);
     Directory('${Directory.current.path}${p.separator}lib${p.separator}core')
         .createSync();
     Directory(

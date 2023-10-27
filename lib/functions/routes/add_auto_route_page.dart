@@ -10,10 +10,10 @@ import '../find_file/find_file_by_name.dart';
 import '../formatter_dart_file/frommatter_dart_file.dart';
 
 void addAutoRoutePage(String name, String viewDir) {
-  var appPagesFile = findFileByName('module_router.dart');
+  var appPagesFile = findFileByName('_router.dart');
   var lines = <String>[];
   if (appPagesFile.path.isEmpty) {
-    throw CliException('The module_router file is found');
+    throw CliException('The _router file is found');
   } else {
     var content = formatterDartFile(appPagesFile.readAsStringSync());
     lines = LineSplitter.split(content).toList();
