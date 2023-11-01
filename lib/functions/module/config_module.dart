@@ -8,11 +8,11 @@ import '../create/create_single_file.dart';
 void configModuleFile(String nameModule, String path) {
   final moduleName = PubspecUtils.appName ?? '';
   final import =
-      '''import 'package:auto_route/src/route/auto_route_config.dart';
-  import 'package:core_ui/base/base_module.dart';
-  import 'package:$moduleName/core/router/${nameModule.snakeCase}_router.dart';
-  import 'core/di/injection.dart';
+      '''import 'package:core_ui/core_ui.dart';
+import 'core/router/router_factory.dart';
+import 'core/di/injection.dart';
   ''';
+
   var file = File(path);
   if (file.existsSync()) {
     var lines = file.readAsLinesSync();
@@ -29,20 +29,15 @@ void configModuleFile(String nameModule, String path) {
     lines.insert(2, import);
 
     // add module
-    lines.add('''late Function(String) setInitRoute;
+    lines.add('''
     class ${moduleName.pascalCase} extends BaseModule {
-      final moduleRouter = ${nameModule.pascalCase}Router();
     
       @override
-      void injectDependency() => configureDependencies();
-    
-      @override
-      void onSetInitRoute(Function(String) callback) {
-        setInitRoute = callback;
-      }
-    
-      @override
-      List<AutoRoute> getListRoute() => moduleRouter.routes;
+  void injectDependency() => configureDependencies();
+
+  @override
+  Map<String, FlutterBoostRouteFactory> getRouterMap() =>
+      RouteFactory.routerMap;
     }
     ''');
 

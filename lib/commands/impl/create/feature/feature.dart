@@ -12,7 +12,7 @@ import '../../../../core/locales.g.dart';
 import '../../../../core/structure.dart';
 import '../../../../functions/create/create_single_file.dart';
 import '../../../../functions/dependency/add_dependencies.dart';
-import '../../../../functions/routes/add_auto_route.dart';
+import '../../../../functions/routes/add_route_factory.dart';
 import '../../../../samples/impl/cubit.dart';
 import '../../../../samples/impl/page.dart';
 import '../../../../samples/impl/repository.dart';
@@ -75,7 +75,6 @@ class CreateFeatureCommand extends Command {
       Directory(path).createSync(recursive: true);
       _writeFiles(path, name!, overwrite: false);
     }
-    await ShellUtils.flutterGen();
   }
 
   void _writeFiles(String path, String name, {bool overwrite = false}) {
@@ -134,7 +133,7 @@ class CreateFeatureCommand extends Command {
       Structure.pathToDirImport(repositoryFile.path),
       Structure.pathToDirImport(cubitFile.path),
     );
-    addAutoRoute(
+    addRouteFactory(
       name,
       Structure.pathToDirImport(pageFile.path),
     );

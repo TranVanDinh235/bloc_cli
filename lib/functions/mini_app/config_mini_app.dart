@@ -6,7 +6,6 @@ import '../../core/structure.dart';
 import 'package:path/path.dart' as p;
 
 import 'config_main_file.dart';
-import 'config_mini_app_router.dart';
 
 Future configMiniApp(String module, String path) async {
   Directory.current = path;
@@ -20,23 +19,12 @@ Future configMiniApp(String module, String path) async {
   // add dependencies
   await PubspecUtils.addPathDependencies(module, path: '../');
 
-  await PubspecUtils.addDependencies('build_runner', isDev: true);
-  await PubspecUtils.addDependencies(
-    'auto_route_generator',
-    version: '7.1.1',
-    isDev: true,
-    runPubGet: true,
-  );
+  await PubspecUtils.addDependencies('build_runner', isDev: true, runPubGet: true);
 
   // config main file
   final pathFileMain = Structure.replaceAsExpected(
       path: '$path${p.separator}lib${p.separator}main.dart');
   await configMainFile(pathFileMain, module);
 
-  final pathFileRouter = Structure.replaceAsExpected(
-      path: '$path${p.separator}lib${p.separator}app_router.dart');
-  await configMiniAppRouterFile(pathFileRouter, module);
-
-  LogService.success('gen code');
-  await ShellUtils.flutterGen();
+  LogService.success('Mini app $module created successfully!');
 }

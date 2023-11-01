@@ -39,7 +39,6 @@ class CreateModuleCommand extends Command {
     await PubspecUtils.addPathDependencies('core_ui', path: '../core_ui');
     await PubspecUtils.addPathDependencies('core_network',
         path: '../core_network');
-    await PubspecUtils.addDependencies('auto_route_generator', version: '7.1.1', isDev: true);
     await PubspecUtils.addDependencies('build_runner', isDev: true);
     await PubspecUtils.addDependencies('json_serializable',
         isDev: true, runPubGet: true);
@@ -63,15 +62,11 @@ class CreateModuleCommand extends Command {
         path:
             '${Directory.current.path}${p.separator}lib${p.separator}core${p.separator}di${p.separator}injection.dart');
     configInjectionFile(pathFileInjection);
-    final pathFileRouterConstant = Structure.replaceAsExpected(
-        path:
-            '${Directory.current.path}${p.separator}lib${p.separator}core${p.separator}router${p.separator}route_constants.dart');
-    configRouterConstant(pathFileRouterConstant);
+
     final pathFileRouter = Structure.replaceAsExpected(
         path:
-            '${Directory.current.path}${p.separator}lib${p.separator}core${p.separator}router${p.separator}${nameModule.snakeCase}_router.dart');
+            '${Directory.current.path}${p.separator}lib${p.separator}core${p.separator}router${p.separator}router_factory.dart');
     configRouterFile(nameModule, pathFileRouter);
-    await ShellUtils.flutterGen();
 
     // create mini app
     await ShellUtils.flutterCreateMiniApp('mini_app', workingDirectory: Directory.current.path);

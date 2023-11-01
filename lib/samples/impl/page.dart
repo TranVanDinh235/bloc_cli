@@ -19,7 +19,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/injection.dart';
 import '../cubit/${_fileName.snakeCase}_cubit.dart';
 
-@RoutePage()
 class ${_fileName.pascalCase}Page extends StatelessWidget {
   const ${_fileName.pascalCase}Page({Key? key}) : super(key: key);
 
