@@ -38,7 +38,7 @@ Future configMainFile(String path, String moduleName) async {
       final moduleManagement = ModuleManagement.getInstance();
       moduleManagement.init([${moduleName.pascalCase}()]);
     
-      AppLauncherProps props = AppLauncherProps(
+      AppLauncherProps props = AppLauncherProps.getInstance(
         appName: 'Mini App',
         routerMap: moduleManagement.getAllRouteMap(),
         initialRoute: '${moduleName.camelCase}',
