@@ -29,13 +29,6 @@ class CreateModuleCommand extends Command {
         path: Directory.current.path + p.separator + nameModule.snakeCase);
     Directory.current = path;
 
-    await ShellUtils.removeFolder('android');
-    await ShellUtils.removeFolder('ios');
-    await ShellUtils.removeFolder('linux');
-    await ShellUtils.removeFolder('macos');
-    await ShellUtils.removeFolder('windows');
-    await ShellUtils.removeFolder('test');
-
     await PubspecUtils.addPathDependencies('core_ui', path: '../core_ui');
     await PubspecUtils.addPathDependencies('core_network',
         path: '../core_network');
