@@ -8,7 +8,7 @@ import '../create/create_single_file.dart';
 void configModuleFile(String nameModule, String path) {
   final moduleName = PubspecUtils.appName ?? '';
   final import =
-      '''import 'package:core_ui/core_ui.dart';
+      '''import 'package:core/core.dart';
 import 'core/router/router_factory.dart';
 import 'core/di/injection.dart';
   ''';

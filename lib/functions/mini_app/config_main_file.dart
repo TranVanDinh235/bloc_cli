@@ -4,7 +4,7 @@ import 'package:recase/recase.dart';
 import '../create/create_single_file.dart';
 
 Future configMainFile(String path, String moduleName) async {
-  final import = '''import 'package:core_ui/core_ui.dart';
+  final import = '''import 'package:core/core.dart';
   import 'package:core_network/core_network.dart';
   import 'package:flutter/material.dart';
   import 'package:$moduleName/core/di/injection.dart';
@@ -40,9 +40,9 @@ Future configMainFile(String path, String moduleName) async {
     
       AppLauncherProps props = AppLauncherProps(
         appName: 'Mini App',
-        module: ${moduleName.pascalCase}(),
         routerMap: moduleManagement.getAllRouteMap(),
         initialRoute: '${moduleName.camelCase}',
+        arguments: {},
       );
     
       runApp(MiniApp(props: props));

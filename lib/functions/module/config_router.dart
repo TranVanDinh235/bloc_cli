@@ -5,7 +5,7 @@ import '../../common/utils/logger/log_utils.dart';
 import '../create/create_single_file.dart';
 
 void configRouterFile(String nameModule, String path) {
-  final import = '''import 'package:core_ui/core_ui.dart';
+  final import = '''import 'package:core/core.dart';
   import 'package:flutter/material.dart';
   ''';
 
