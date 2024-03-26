@@ -183,7 +183,7 @@ class @controller extends GetxController {
 输出:
 
 ```dart
-import 'package:get/vtm.dart';
+import 'package:get/bloc_cli.dart';
 
 class AuthController extends GetxController {
   final email = ''.obs;

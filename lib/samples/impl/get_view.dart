@@ -21,7 +21,7 @@ class GetViewSample extends Sample {
       _controller.isNotEmpty ? 'GetView<$_controller>' : 'GetView';
 
   String get _flutterView => '''import 'package:flutter/material.dart';
-import 'package:get/vtm.dart'; 
+import 'package:get/bloc_cli.dart'; 
 $import
 
 class $_viewName extends $_controllerName {

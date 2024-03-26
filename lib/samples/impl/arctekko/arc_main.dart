@@ -5,7 +5,7 @@ class ArcMainSample extends Sample {
 
   @override
   String get content => '''import 'package:flutter/material.dart';
-import 'package:get/vtm.dart';
+import 'package:get/bloc_cli.dart';
 
 import 'infrastructure/navigation/navigation.dart';
 import 'infrastructure/navigation/routes.dart';

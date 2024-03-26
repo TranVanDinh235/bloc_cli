@@ -3,15 +3,15 @@ import '../commands/impl/help/help.dart';
 import '../commands/interface/command.dart';
 import '../common/utils/logger/log_utils.dart';
 
-class VTMCli {
+class BLOCCli {
   final List<String> _arguments;
 
-  VTMCli(this._arguments) {
+  BLOCCli(this._arguments) {
     _instance = this;
   }
 
-  static VTMCli? _instance;
-  static VTMCli? get to => _instance;
+  static BLOCCli? _instance;
+  static BLOCCli? get to => _instance;
 
   static List<String> get arguments => to!._arguments;
 

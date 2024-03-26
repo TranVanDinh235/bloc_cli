@@ -1,12 +1,12 @@
-import 'package:vtm_cli/common/utils/logger/log_utils.dart';
-import 'package:vtm_cli/exception_handler/exception_handler.dart';
-import 'package:vtm_cli/functions/version/version_update.dart';
-import 'package:vtm_cli/vtm_cli.dart';
+import 'package:bloc_cli/common/utils/logger/log_utils.dart';
+import 'package:bloc_cli/exception_handler/exception_handler.dart';
+import 'package:bloc_cli/functions/version/version_update.dart';
+import 'package:bloc_cli/bloc_cli.dart';
 
 Future<void> main(List<String> arguments) async {
   var time = Stopwatch();
   time.start();
-  final command = VTMCli(arguments).findCommand();
+  final command = BLOCCli(arguments).findCommand();
 
   if (arguments.contains('--debug')) {
     if (command.validate()) {

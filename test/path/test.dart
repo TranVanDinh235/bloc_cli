@@ -1,4 +1,4 @@
-import 'package:vtm_cli/functions/path/replace_to_relative.dart';
+import 'package:bloc_cli/functions/path/replace_to_relative.dart';
 import 'package:test/test.dart';
 
 void main() {

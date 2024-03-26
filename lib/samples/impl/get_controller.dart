@@ -34,7 +34,7 @@ class ${_fileName.pascalCase}Controller extends GetxController {
 
 }
 ''';
-  String get flutterController => '''import 'package:get/vtm.dart';
+  String get flutterController => '''import 'package:get/bloc_cli.dart';
 
 class ${_fileName.pascalCase}Controller extends GetxController {
   //TODO: Implement ${_fileName.pascalCase}Controller

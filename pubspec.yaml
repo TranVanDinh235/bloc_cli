@@ -1,4 +1,4 @@
-name: vtm_cli
+name: bloc_cli
 version: 1.8.2
 homepage: https://github.com/jonataslaw/get_cli
 description: Official CLI for GetX™ framework to build Flutter and Server
@@ -27,4 +27,4 @@ dev_dependencies:
   test: ^1.5.0
 
 executables:
-  vtm: vtm
+  bloc_cli: bloc_cli

@@ -49,8 +49,8 @@ class ShellUtils {
 
   static Future<void> update(
       [bool isGit = false, bool forceUpdate = false]) async {
-    isGit = VTMCli.arguments.contains('--git');
-    forceUpdate = VTMCli.arguments.contains('-f');
+    isGit = BLOCCli.arguments.contains('--git');
+    forceUpdate = BLOCCli.arguments.contains('-f');
     if (!isGit && !forceUpdate) {
       var versionInPubDev =
           await PubDevApi.getLatestVersionFromPackage('get_cli');

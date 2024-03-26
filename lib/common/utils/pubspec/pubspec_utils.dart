@@ -166,7 +166,7 @@ class PubspecUtils {
   }
 
   static String get getPackageImport => !isServerProject
-      ? "import 'package:get/vtm.dart';"
+      ? "import 'package:get/bloc_cli.dart';"
       : "import 'package:get_server/get_server.dart';";
 
   static v.Version? getPackageVersion(String package) {

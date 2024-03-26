@@ -13,7 +13,7 @@ import '../create/create_single_file.dart';
 ///
 ///Example your bindings look like this:
 /// ```
-///import 'package:get/vtm.dart';
+///import 'package:get/bloc_cli.dart';
 ///import 'home_controller.dart';
 ///class HomeBinding extends Bindings {
 ///   @override
@@ -29,7 +29,7 @@ import '../create/create_single_file.dart';
 ///
 /// //the exit will be:
 ///
-///import 'package:get/vtm.dart';
+///import 'package:get/bloc_cli.dart';
 ///import 'home_controller.dart';
 ///import 'package:example/DEPENDENCY_DIR';
 ///class HomeBinding extends Bindings {

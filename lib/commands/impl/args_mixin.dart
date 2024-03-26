@@ -4,7 +4,7 @@ import 'package:recase/recase.dart';
 import '../../core/generator.dart';
 
 mixin ArgsMixin {
-  final List<String> _args = VTMCli.arguments;
+  final List<String> _args = BLOCCli.arguments;
 
   /// all arguments
   ///
@@ -110,7 +110,7 @@ mixin ArgsMixin {
   }
 }
 List<String> _getArgs() {
-  var args = List.of(VTMCli.arguments);
+  var args = List.of(BLOCCli.arguments);
   _removeDefaultArgs(args);
   args.removeWhere((element) => element.startsWith('-'));
   return args;
@@ -131,7 +131,7 @@ void _removeDefaultArgs(List<String> args) {
 }
 
 List<String> _getFlags() {
-  var args = List.of(VTMCli.arguments);
+  var args = List.of(BLOCCli.arguments);
   var flags = args.where((element) {
     return element.startsWith('-') && element != '--debug';
   }).toList();
@@ -140,15 +140,15 @@ List<String> _getFlags() {
 }
 
 int _getIndexArg(String arg) {
-  return VTMCli.arguments.indexWhere((element) => element == arg);
+  return BLOCCli.arguments.indexWhere((element) => element == arg);
 }
 
 String _getArg(String arg) {
   var index = _getIndexArg(arg);
   if (index != -1) {
-    if (index + 1 < VTMCli.arguments.length) {
+    if (index + 1 < BLOCCli.arguments.length) {
       index++;
-      return VTMCli.arguments[index];
+      return BLOCCli.arguments[index];
     } else {
       throw ClientException("the '$arg' argument is empty");
     }

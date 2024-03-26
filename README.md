@@ -7,7 +7,7 @@ Official CLI for the VTM™ framework.
 
 ```dart
 // To install:
-flutter pub global activate --source git https://github.com/TranVanDinh235/my_cli.git 
+flutter pub global activate --source git https://github.com/TranVanDinh235/bloc_cli.git 
 
 
 // To create a module in the current directory:

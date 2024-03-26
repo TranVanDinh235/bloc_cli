@@ -23,8 +23,8 @@ class CreateScreenCommand extends Command {
   @override
   Future<void> execute() async {
     var isProject = false;
-    if (VTMCli.arguments[0] == 'create') {
-      isProject = VTMCli.arguments[1].split(':').first == 'project';
+    if (BLOCCli.arguments[0] == 'create') {
+      isProject = BLOCCli.arguments[1].split(':').first == 'project';
     }
     var name = this.name;
     if (name.isEmpty || isProject) {

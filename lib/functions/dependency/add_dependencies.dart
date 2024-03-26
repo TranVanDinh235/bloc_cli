@@ -1,18 +1,15 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:recase/recase.dart';
 
-import '../../common/utils/logger/log_utils.dart';
 import '../../common/utils/pubspec/pubspec_utils.dart';
-import '../../core/locales.g.dart';
 import '../../exception_handler/exceptions/cli_exception.dart';
 import '../create/create_single_file.dart';
 import '../find_file/find_file_by_name.dart';
 import '../formatter_dart_file/frommatter_dart_file.dart';
 
 void addDependency(String name, String repoDir, String cubitDir) {
-  var appPagesFile = findFileByName('injection.dart');
+  var appPagesFile = findFileByName('dependencies.dart');
   var lines = <String>[];
   if (appPagesFile.path.isEmpty) {
     throw CliException('The injection.dart file is found');

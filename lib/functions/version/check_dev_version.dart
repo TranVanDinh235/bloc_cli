@@ -4,5 +4,5 @@ import 'package:path/path.dart';
 
 bool isDevVersion() {
   var scriptFile = Platform.script.toFilePath();
-  return basename(scriptFile) == 'vtm.dart';
+  return basename(scriptFile) == 'bloc_cli.dart';
 }
