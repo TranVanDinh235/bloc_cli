@@ -63,7 +63,7 @@ class CreateFeatureCommand extends Command {
       );
       final result = menu.choose();
       if (result.index == 0) {
-        _writeFiles(path, name!, overwrite: true);
+        await _writeFiles(path, name!, overwrite: true);
       } else if (result.index == 2) {
         // final dialog = CLI_Dialog();
         // dialog.addQuestion(LocaleKeys.ask_new_page_name.tr, 'name');
@@ -73,11 +73,11 @@ class CreateFeatureCommand extends Command {
       }
     } else {
       Directory(path).createSync(recursive: true);
-      _writeFiles(path, name!, overwrite: false);
+      await _writeFiles(path, name!, overwrite: false);
     }
   }
 
-  void _writeFiles(String path, String name, {bool overwrite = false}) {
+  Future _writeFiles(String path, String name, {bool overwrite = false}) async {
     var extraFolder = PubspecUtils.extraFolder ?? true;
     var repositoryFile = handleFileCreate(
       name,
@@ -133,7 +133,7 @@ class CreateFeatureCommand extends Command {
       Structure.pathToDirImport(repositoryFile.path),
       Structure.pathToDirImport(cubitFile.path),
     );
-    addRouteFactory(
+    await addRouteFactory(
       name,
       Structure.pathToDirImport(pageFile.path),
     );

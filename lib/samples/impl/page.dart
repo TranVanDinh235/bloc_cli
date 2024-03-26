@@ -15,10 +15,12 @@ class PageSample extends Sample {
   String get page => '''import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:auto_route/auto_route.dart';
 
-import '../../../../core/di/injection.dart';
+import '../../../../core/di/dependencies.dart';
 import '../cubit/${_fileName.snakeCase}_cubit.dart';
 
+@RoutePage()
 class ${_fileName.pascalCase}Page extends StatelessWidget {
   const ${_fileName.pascalCase}Page({Key? key}) : super(key: key);
 
